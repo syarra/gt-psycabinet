@@ -35,12 +35,17 @@ CbCabinetManagerExamples >> exampleCabinet [
 { #category : 'examples' }
 CbCabinetManagerExamples >> exampleCabinetFromImport [
 	<gtExample>
-	| cabinet csvFile |
-	csvFile := '/Users/arrecs/Dropbox/work Claire/CabinetLuxembourg/Clients/patients_export.csv' asFileReference.
+	| cabinet csvData |
+	csvData := 'Prénom;Nom;Adresse;Ville;Code Postal;Pays;Tel;Email;Matricule
+Claire;Dupont;12 rue de la Gare;Luxembourg;1234;Luxembourg;621123456;claire@test.com;1985010112345
+Jean;Martin;5 avenue de la Liberté;Esch-sur-Alzette;4000;Luxembourg;621654321;jean@test.com;1990050567890
+Marie;Weber;8 boulevard Royal;Luxembourg;2449;Luxembourg;621111222;marie@test.com;1978121298765'.
 	cabinet := CbCabinetManager new.
-	cabinet importPatientsFromCsv: csvFile contents.
-	self assert: cabinet patients size > 100.
-	self assert: cabinet patients first lastName equals: 'Chavignaud'.
+	cabinet importPatientsFromCsv: csvData.
+	self assert: cabinet patients size equals: 3.
+	self assert: cabinet patients first lastName equals: 'Dupont'.
+	self assert: cabinet patients second firstName equals: 'Jean'.
+	self assert: cabinet patients third matricule equals: '1978121298765'.
 	^ cabinet
 ]
 
