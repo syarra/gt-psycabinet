@@ -25,3 +25,4 @@ jobs:
         with:
           baseline-name: 'GtPsyCabinet'
           test-suite-name: 'Gt-PsyCabinet Tests'
+          gt-version: 'v1.1.285'
